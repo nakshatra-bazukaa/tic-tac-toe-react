@@ -23,7 +23,7 @@ class Board extends React.Component {
   render() {
     const { a, b, c } = this.props;
     return (
-      <div>
+      <div className="ttt-board">
         <div className="board-row">
           {this.renderSquare(0, a, b, c)}
           {this.renderSquare(1, a, b, c)}

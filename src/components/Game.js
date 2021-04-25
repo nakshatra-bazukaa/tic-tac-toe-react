@@ -12,8 +12,12 @@ class Game extends React.Component {
       ],
       stepNumber: 0,
       xIsNext: true,
+      a: null,
+      b: null,
+      c: null,
     };
   }
+
   calculateWinner(squares) {
     const lines = [
       [0, 1, 2],
@@ -32,11 +36,18 @@ class Game extends React.Component {
         squares[a] === squares[b] &&
         squares[a] === squares[c]
       ) {
+        this.state = {
+          ...this.state,
+          a,
+          b,
+          c,
+        };
         return squares[a];
       }
     }
     return null;
   }
+
   handleClick(i) {
     const history = this.state.history.slice(0, this.state.stepNumber + 1);
     const current = history[history.length - 1];
@@ -51,12 +62,14 @@ class Game extends React.Component {
       xIsNext: !this.state.xIsNext,
     });
   }
+
   jumpTo(step) {
     this.setState({
       stepNumber: step,
       xIsNext: step % 2 === 0,
     });
   }
+
   render() {
     const history = this.state.history;
     const current = history[this.state.stepNumber];
@@ -84,6 +97,9 @@ class Game extends React.Component {
           <Board
             squares={current.squares}
             onClick={(i) => this.handleClick(i)}
+            a={this.state.a}
+            b={this.state.b}
+            c={this.state.c}
           />
         </div>
       </div>

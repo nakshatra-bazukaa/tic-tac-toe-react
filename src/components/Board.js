@@ -2,7 +2,8 @@ import React from 'react';
 import Square from './Square';
 
 class Board extends React.Component {
-  renderSquare(i, a, b, c) {
+  renderSquare(i) {
+    const { a, b, c } = this.props;
     if (i === a || i === b || i === c) {
       return (
         <Square
@@ -21,23 +22,22 @@ class Board extends React.Component {
     }
   }
   render() {
-    const { a, b, c } = this.props;
     return (
       <div className="ttt-board">
         <div className="board-row">
-          {this.renderSquare(0, a, b, c)}
-          {this.renderSquare(1, a, b, c)}
-          {this.renderSquare(2, a, b, c)}
+          {this.renderSquare(0)}
+          {this.renderSquare(1)}
+          {this.renderSquare(2)}
         </div>
         <div className="board-row">
-          {this.renderSquare(3, a, b, c)}
-          {this.renderSquare(4, a, b, c)}
-          {this.renderSquare(5, a, b, c)}
+          {this.renderSquare(3)}
+          {this.renderSquare(4)}
+          {this.renderSquare(5)}
         </div>
         <div className="board-row">
-          {this.renderSquare(6, a, b, c)}
-          {this.renderSquare(7, a, b, c)}
-          {this.renderSquare(8, a, b, c)}
+          {this.renderSquare(6)}
+          {this.renderSquare(7)}
+          {this.renderSquare(8)}
         </div>
       </div>
     );
